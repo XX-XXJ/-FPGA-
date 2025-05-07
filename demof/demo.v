@@ -1,0 +1,341 @@
+module demo(
+    input clk,              // 时钟50MHz
+    input reset,            // 复位
+	 //时间
+	 input switch_start,		 //开始
+    input switch_timeset,   // 置数
+    input switch_addsub,    // 加减模式
+    input button_second,    // 置秒
+    input button_minute,    // 置分
+	 input [1:0] switch_speedmode,	
+	 //分数
+	 input select_team,      // 选择队伍
+	 input team_switch,	    // 半场交换队伍
+	 input [1:0] period,		 // 比赛节数
+    input button_point1,    // 1分按钮
+    input button_point2,    // 2分按钮
+    output [6:0] seg0,      // 秒钟个位
+    output [6:0] seg1,      // 秒钟十位
+    output [6:0] seg2,      // 分钟个位
+    output [6:0] seg3,      // 分钟十位
+	 output [6:0] seg4,      // 队伍1得分个位显示
+    output [6:0] seg5,      // 队伍1得分十位显示
+    output [6:0] seg6,      // 队伍2得分个位显示
+    output [6:0] seg7,       // 队伍2得分十位显示
+	 output reg buzzer,
+	 output reg LED_Warning,	//30s警告
+	 	//lcd的引脚
+	output 		[7:0] 	dat		,//LCD的8位数据口
+ 	output  			rs		,//数据命令选择信号，高电平表示数据，低电平表示命令
+ 	output				rw		,//读写标志，高电平表示读，低电平表示写，该程序我们只对液晶屏进行写操作
+ 	output				en		//LCD的控制脚 
+	 );	 
+    // 时间处理
+    reg clk_1Hz_reg, clk_1Hz_prev;
+
+    // 用于记录按钮的当前状态和上一时刻的状态
+    reg button_second_reg, button_second_prev;
+    reg button_minute_reg, button_minute_prev;
+
+    // 用于检测clk_1Hz的上升沿与按钮的上升沿
+    wire button_second_edge, button_minute_edge, clk_1Hz_edge;
+	 
+
+
+    // 检验clk_1Hz上升沿
+    assign clk_1Hz_edge = (clk_1Hz_prev == 1'b0 && clk_1Hz_reg == 1'b1);
+
+    // 检测按钮1的上升沿：从按下（0）到松开（1）
+    assign button_second_edge = (button_second_prev == 1'b0 && button_second_reg == 1'b1);
+
+    // 检测按钮2的上升沿：从按下（0）到松开（1）
+    assign button_minute_edge = (button_minute_prev == 1'b0 && button_minute_reg == 1'b1);
+
+    // 50 MHz 对应的计数值，1 秒对应 25,000,000 个时钟周期
+    parameter N = 25000000;
+
+    reg [25:0] counter;  // 分频计数器
+    reg clk_1Hz;         // 输出1Hz信号
+	 reg [11:0] total_seconds;
+	 reg [11:0] pre_seconds;    // 存储上次的时间（秒）
+	 
+	 initial begin
+        pre_seconds <= 12'd600;  // 设置初始时间为600秒（10分钟）
+        total_seconds <= 12'd600;  // 显示 10 分钟初始值
+    end
+	 
+    always @(posedge clk or negedge reset) begin
+        if (!reset) begin
+            // 初始化所有寄存器
+			   button_second_reg <= 1'b1;  // 默认松开
+            button_minute_reg <= 1'b1;
+            button_second_prev <= 1'b1;
+            button_minute_prev <= 1'b1;
+            clk_1Hz_reg <= 1'b0;  // 默认低电平
+            clk_1Hz_prev <= 1'b0;
+            counter <= 0;
+            clk_1Hz <= 0;  // 复位时，计数器和 1 Hz 信号清零
+			   total_seconds <= pre_seconds;  // 恢复上次的时间
+        end else begin
+            // 更新按钮状态
+            button_second_prev <= button_second_reg;
+            button_minute_prev <= button_minute_reg;
+            button_second_reg <= button_second;
+            button_minute_reg <= button_minute;
+				if (switch_timeset) begin
+                // 在 switch_timeset 信号触发时，保存当前的时间
+                pre_seconds <= total_seconds;
+            end
+
+            // 生成 1 Hz 时钟
+            if (counter == (N - 1)) begin
+                counter <= 26'b0;
+                clk_1Hz <= ~clk_1Hz;  // 每 50,000,000 个时钟周期反转一次，产生 1 Hz 信号
+            end else begin
+                counter <= counter + 26'b1;  // 用二进制 26 位计数
+            end
+
+            // 检查 clk_1Hz 上升沿
+            clk_1Hz_prev <= clk_1Hz_reg;
+            clk_1Hz_reg <= clk_1Hz;
+
+				// 按键输入：设置总秒数
+				if (switch_timeset) begin  // 按下置数按键后设置时间
+					 // 检测并处理分钟按钮
+					 if (button_minute_edge) begin  // 按钮松开时进行加减操作
+						  if (switch_addsub) begin  // 判断加减模式
+								if (total_seconds < 12'd3540)  // 不超过 59 分钟
+									 total_seconds <= total_seconds + 12'd60;  // 增加 1 分钟
+								else 
+									 total_seconds <= 12'd0;  // 超过最大值时归零
+						  end else begin
+								if (total_seconds > 12'd59)
+									 total_seconds <= total_seconds - 12'd60;  // 减少 1 分钟
+								else
+									 total_seconds <= 12'd0;  // 处理负值情况，重置为 0
+						  end
+					 end
+
+					 // 检测并处理秒按钮
+					 if (button_second_edge) begin  // 按钮松开时进行加减操作
+						  if (switch_addsub) begin  // 判断加减模式
+								if (total_seconds < 12'd3599)  // 不超过 59 分钟 59 秒
+									 total_seconds <= total_seconds + 12'd1;  // 增加 1 秒
+								else 
+									 total_seconds <= 12'd0;  // 超过最大值时归零
+						  end else begin
+								if (total_seconds > 12'd0)
+									 total_seconds <= total_seconds - 12'd1;  // 减少 1 秒
+								else 
+									 total_seconds <= 12'd0;  // 处理负值情况，重置为 0
+						  end
+					 end
+				end
+				
+				case (switch_speedmode)
+					2'b00: begin  // 正常速度模式
+						if (clk_1Hz_edge && switch_start && !switch_timeset) begin
+							if (total_seconds > 12'd0) begin
+									total_seconds <= total_seconds - 12'd1;  // 每秒减少 1 秒
+							end
+						end
+					end
+
+					2'b10: begin  // 五倍速模式
+						if (clk_1Hz_edge && switch_start && !switch_timeset) begin
+							if (total_seconds >= 12'd5) begin
+									total_seconds <= total_seconds - 12'd5;  // 每次减少 5 秒
+							end else begin
+									total_seconds <= 12'd0;  // 防止负数
+							end
+						end
+					end
+
+					2'b11: begin  // 十倍速模式
+						if (clk_1Hz_edge && switch_start && !switch_timeset) begin
+							if (total_seconds >= 12'd10) begin
+									total_seconds <= total_seconds - 12'd10;  // 每次减少 10 秒
+							end else begin
+									total_seconds <= 12'd0;  // 防止负数
+							end
+						end
+					end
+
+					default: begin  // 默认正常速度模式
+						if (clk_1Hz_edge && switch_start && !switch_timeset) begin
+							if (total_seconds > 12'd0) begin
+									total_seconds <= total_seconds - 12'd1;  // 每秒减少 1 秒
+							end
+						end
+					end
+			endcase
+		end
+	end
+	 
+	 //倒计时30sLED闪烁
+	always @(posedge clk_1Hz or negedge reset)begin
+		if(!reset)begin
+			LED_Warning <= 1'b0;	//复位时LED关闭
+			buzzer <= 1'b0;
+		end else if(total_seconds < 12'd31 && switch_start == 1'b1)begin
+			LED_Warning <= (total_seconds % 12'd2); // 每秒钟闪烁一次，LED 状态在 0 和 1 之间切换
+			buzzer <= 1'b1;
+		end
+		else begin
+			buzzer <= 1'b0;
+			LED_Warning <= 1'b0;
+		end
+	end
+	 
+	 //分数处理
+	 reg [7:0] team1_score;  // 8位宽，支持 0-99 分
+    reg [7:0] team2_score;
+	 reg [7:0] team_name;
+
+	 initial begin
+		team_name <= 8'hAB;
+	 end
+	 
+	 // 用于记录上一个时钟周期的 team_switch 状态
+	 reg team_switch_reg, team_switch_prev;
+	 
+    // 用于记录按钮的当前状态和上一时刻的状态
+    reg button_point1_reg, button_point1_prev;
+    reg button_point2_reg, button_point2_prev;
+
+    // 用于检测按钮的上升沿
+    wire button_point1_edge, button_point2_edge;
+	 
+	 // 声明 team_switch_edge 为 wire 类型
+	 wire team_switch_edge;
+
+	 // 检测 team_switch 的上升沿：从 0 到 1
+	 assign team_switch_edge = (team_switch_prev == 1'b0 && team_switch_reg == 1'b1);
+
+    // 检测按钮1的上升沿：从按下（0）到松开（1）
+    assign button_point1_edge = (button_point1_prev == 1'b0 && button_point1_reg == 1'b1);
+
+    // 检测按钮2的上升沿：从按下（0）到松开（1）
+    assign button_point2_edge = (button_point2_prev == 1'b0 && button_point2_reg == 1'b1);
+
+    // 记录按钮状态
+    always @(posedge clk or negedge reset) begin
+        if (!reset) begin
+            button_point1_reg <= 1'b1;  // 默认松开
+            button_point2_reg <= 1'b1;
+            button_point1_prev <= 1'b1;
+            button_point2_prev <= 1'b1;
+        end else begin
+            // 更新按钮状态
+            button_point1_prev <= button_point1_reg;
+            button_point2_prev <= button_point2_reg;
+            button_point1_reg <= button_point1;
+            button_point2_reg <= button_point2;
+        end
+    end
+
+	 //比赛节数
+	 
+   // 分数加减逻辑
+	always @(posedge clk or negedge reset) begin
+		 if (!reset) begin
+			  team_switch_reg <= 1'b0;  // 默认值为 0
+			  team_switch_prev <= 1'b0;
+			  team1_score <= 8'd0;
+			  team2_score <= 8'd0;
+			  // 其他复位操作...
+		 end else begin
+			  // 更新 team_switch 状态
+			  team_switch_prev <= team_switch_reg;
+			  team_switch_reg <= team_switch;
+			  
+			  // 处理分数交换
+			  if (team_switch_edge) begin
+					// 在 team_switch 上升沿时交换队伍分数
+					{team1_score, team2_score} <= {team2_score, team1_score};
+					// 队伍互换
+					team_name = {team_name[3:0], team_name[7:4]};  // 将低四位和高四位交换
+			  end else begin
+					// 根据队伍和模式更新分数
+					if (select_team) begin  // 选择队伍1
+						 if (switch_addsub) begin  // 加分
+							  if (button_point2_edge && team1_score < 8'd99) team1_score <= team1_score + 8'd2;
+							  else if (button_point1_edge && team1_score < 8'd99) team1_score <= team1_score + 8'd1;
+						 end else begin  // 减分
+							  if (button_point2_edge && team1_score >= 8'd2) team1_score <= team1_score - 8'd2;
+							  else if (button_point1_edge && team1_score > 8'd0) team1_score <= team1_score - 8'd1;
+						 end
+					end else begin  // 选择队伍2
+						 if (switch_addsub) begin  // 加分
+							  if (button_point2_edge && team2_score < 8'd99) team2_score <= team2_score + 8'd2;
+							  else if (button_point1_edge && team2_score < 8'd99) team2_score <= team2_score + 8'd1;
+						 end else begin  // 减分
+							  if (button_point2_edge && team2_score >= 8'd2) team2_score <= team2_score - 8'd2;
+							  else if (button_point1_edge && team2_score > 8'd0) team2_score <= team2_score - 8'd1;
+						 end
+					end
+			  end
+		 end
+	end
+		
+	// 计算分钟和秒数
+	wire [5:0] minutes = total_seconds / 12'd60;
+	wire [5:0] seconds = total_seconds % 12'd60;
+
+	// 数码管显示部分：将分钟和秒钟的个位和十位传递给 seven_segment_display 模块
+	seven_segment_display digit0 (
+		 .digit(seconds % 10),  // 获取秒的个位
+		 .seg(seg0)  // 连接seg0
+	);
+
+	seven_segment_display digit1 (
+		 .digit((seconds / 10) % 10),  // 获取秒的十位
+		 .seg(seg1)  // 连接seg1
+	);
+
+	seven_segment_display digit2 (
+		 .digit(minutes % 10),  // 获取分钟的个位
+		 .seg(seg2)  // 连接seg2
+	);
+
+	seven_segment_display digit3 (
+		 .digit((minutes / 10) % 10),  // 获取分钟的十位
+		 .seg(seg3)  // 连接seg3
+	);
+
+	 // 数码管显示部分：实例化 7段显示模块
+    seven_segment_display seg_disp1_unit(
+        .digit(team1_score % 10),    // 队伍1得分个位
+        .seg(seg4)                   // 队伍1得分个位显示
+    );
+
+    seven_segment_display seg_disp2_unit(
+        .digit((team1_score / 10) % 10),  // 队伍1得分十位
+        .seg(seg5)                       // 队伍1得分十位显示
+    );
+
+    seven_segment_display seg_disp3_unit(
+        .digit(team2_score % 10),    // 队伍2得分个位
+        .seg(seg6)                   // 队伍2得分个位显示
+    );
+
+    seven_segment_display seg_disp4_unit(
+        .digit((team2_score / 10) % 10),  // 队伍2得分十位
+        .seg(seg7)                       // 队伍2得分十位显示
+    );
+
+	 wire [17:0] disp_lcd;//场次分数数据串
+	 assign disp_lcd = {period,team1_score,team2_score};
+	 
+	 //lcd屏幕
+	lcd1602 lcd1602(
+		.clk	(clk	)	,//系统时钟输入50M
+		.rst_n	(reset),//复位，低电平有效
+		.disp_lcd(disp_lcd),//
+		.team_name(team_name),
+		.dat(dat)		,//LCD的8位数据口
+		.rs	(rs)	,//数据命令选择信号，高电平表示数据，低电平表示命令
+		.rw	(rw)	,//读写标志，高电平表示读，低电平表示写，该程序我们只对液晶屏进行写操作
+		.en	(en)	//LCD的控制脚
+	);
+endmodule

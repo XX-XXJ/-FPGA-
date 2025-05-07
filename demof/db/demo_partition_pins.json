@@ -1,0 +1,341 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "seg0[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seg0[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seg0[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg0[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg0[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg0[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seg0[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seg1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seg1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seg1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seg1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seg2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seg2[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seg2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seg2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seg3[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seg3[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seg3[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg3[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg3[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg3[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seg3[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seg4[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seg4[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seg4[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg4[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg4[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg4[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seg4[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seg5[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seg5[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seg5[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg5[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg5[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg5[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seg5[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seg6[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seg6[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seg6[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg6[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg6[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg6[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seg6[6]",
+					"strict" : false
+				},
+				{
+					"name" : "seg7[0]",
+					"strict" : false
+				},
+				{
+					"name" : "seg7[1]",
+					"strict" : false
+				},
+				{
+					"name" : "seg7[2]",
+					"strict" : false
+				},
+				{
+					"name" : "seg7[3]",
+					"strict" : false
+				},
+				{
+					"name" : "seg7[4]",
+					"strict" : false
+				},
+				{
+					"name" : "seg7[5]",
+					"strict" : false
+				},
+				{
+					"name" : "seg7[6]",
+					"strict" : false
+				},
+				{
+					"name" : "buzzer",
+					"strict" : false
+				},
+				{
+					"name" : "LED_Warning",
+					"strict" : false
+				},
+				{
+					"name" : "dat[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dat[7]",
+					"strict" : false
+				},
+				{
+					"name" : "rs",
+					"strict" : false
+				},
+				{
+					"name" : "en",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "switch_addsub",
+					"strict" : false
+				},
+				{
+					"name" : "select_team",
+					"strict" : false
+				},
+				{
+					"name" : "switch_start",
+					"strict" : false
+				},
+				{
+					"name" : "period[0]",
+					"strict" : false
+				},
+				{
+					"name" : "period[1]",
+					"strict" : false
+				},
+				{
+					"name" : "switch_timeset",
+					"strict" : false
+				},
+				{
+					"name" : "switch_speedmode[0]",
+					"strict" : false
+				},
+				{
+					"name" : "switch_speedmode[1]",
+					"strict" : false
+				},
+				{
+					"name" : "button_point1",
+					"strict" : false
+				},
+				{
+					"name" : "button_point2",
+					"strict" : false
+				},
+				{
+					"name" : "team_switch",
+					"strict" : false
+				},
+				{
+					"name" : "button_second",
+					"strict" : false
+				},
+				{
+					"name" : "button_minute",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

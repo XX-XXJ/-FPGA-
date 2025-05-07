@@ -1,0 +1,1095 @@
+Analysis & Synthesis report for demo
+Wed May 07 10:14:08 2025
+Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |demo|lcd1602:lcd1602|c_state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |demo
+ 14. Parameter Settings for User Entity Instance: lcd1602:lcd1602
+ 15. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
+ 16. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 17. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
+ 18. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2
+ 19. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
+ 20. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod3
+ 21. Parameter Settings for Inferred Entity Instance: lpm_divide:Div2
+ 22. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod4
+ 23. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod5
+ 24. Parameter Settings for Inferred Entity Instance: lpm_divide:Div3
+ 25. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod6
+ 26. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod7
+ 27. Parameter Settings for Inferred Entity Instance: lpm_divide:Div4
+ 28. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod8
+ 29. Port Connectivity Checks: "seven_segment_display:seg_disp4_unit"
+ 30. Port Connectivity Checks: "seven_segment_display:seg_disp3_unit"
+ 31. Port Connectivity Checks: "seven_segment_display:seg_disp2_unit"
+ 32. Port Connectivity Checks: "seven_segment_display:seg_disp1_unit"
+ 33. Port Connectivity Checks: "seven_segment_display:digit3"
+ 34. Port Connectivity Checks: "seven_segment_display:digit2"
+ 35. Port Connectivity Checks: "seven_segment_display:digit1"
+ 36. Port Connectivity Checks: "seven_segment_display:digit0"
+ 37. Post-Synthesis Netlist Statistics for Top Partition
+ 38. Elapsed Time Per Partition
+ 39. Analysis & Synthesis Messages
+ 40. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed May 07 10:14:08 2025           ;
+; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Standard Edition ;
+; Revision Name                      ; demo                                            ;
+; Top-level Entity Name              ; demo                                            ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 1,268                                           ;
+;     Total combinational functions  ; 1,222                                           ;
+;     Dedicated logic registers      ; 172                                             ;
+; Total registers                    ; 172                                             ;
+; Total pins                         ; 84                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; demo               ; demo               ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 10          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 10          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-10        ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                              ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                          ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
+; demo.v                           ; yes             ; User Verilog HDL File        ; D:/googledownload/EDA/demof/demof/demo.v                              ;         ;
+; seven_segment_display.v          ; yes             ; User Verilog HDL File        ; D:/googledownload/EDA/demof/demof/seven_segment_display.v             ;         ;
+; lcd1602.v                        ; yes             ; User Verilog HDL File        ; D:/googledownload/EDA/demof/demof/lcd1602.v                           ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; d:/intelfpga/18.0/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; d:/intelfpga/18.0/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; d:/intelfpga/18.0/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal180.inc                   ; yes             ; Megafunction                 ; d:/intelfpga/18.0/quartus/libraries/megafunctions/aglobal180.inc      ;         ;
+; db/lpm_divide_3bm.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/lpm_divide_3bm.tdf               ;         ;
+; db/sign_div_unsign_olh.tdf       ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/sign_div_unsign_olh.tdf          ;         ;
+; db/alt_u_div_47f.tdf             ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/alt_u_div_47f.tdf                ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/add_sub_7pc.tdf                  ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/add_sub_8pc.tdf                  ;         ;
+; db/lpm_divide_k9m.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/lpm_divide_k9m.tdf               ;         ;
+; db/sign_div_unsign_9kh.tdf       ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/sign_div_unsign_9kh.tdf          ;         ;
+; db/alt_u_div_64f.tdf             ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/alt_u_div_64f.tdf                ;         ;
+; db/lpm_divide_hhm.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/lpm_divide_hhm.tdf               ;         ;
+; db/lpm_divide_0jm.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/lpm_divide_0jm.tdf               ;         ;
+; db/lpm_divide_m9m.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/lpm_divide_m9m.tdf               ;         ;
+; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/sign_div_unsign_bkh.tdf          ;         ;
+; db/alt_u_div_a4f.tdf             ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/alt_u_div_a4f.tdf                ;         ;
+; db/lpm_divide_jhm.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/googledownload/EDA/demof/demof/db/lpm_divide_jhm.tdf               ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimated Total logic elements              ; 1,268       ;
+;                                             ;             ;
+; Total combinational functions               ; 1222        ;
+; Logic element usage by number of LUT inputs ;             ;
+;     -- 4 input functions                    ; 362         ;
+;     -- 3 input functions                    ; 247         ;
+;     -- <=2 input functions                  ; 613         ;
+;                                             ;             ;
+; Logic elements by mode                      ;             ;
+;     -- normal mode                          ; 843         ;
+;     -- arithmetic mode                      ; 379         ;
+;                                             ;             ;
+; Total registers                             ; 172         ;
+;     -- Dedicated logic registers            ; 172         ;
+;     -- I/O registers                        ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 84          ;
+;                                             ;             ;
+; Embedded Multiplier 9-bit elements          ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; reset~input ;
+; Maximum fan-out                             ; 184         ;
+; Total fan-out                               ; 4051        ;
+; Average fan-out                             ; 2.59        ;
++---------------------------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                 ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                   ; Entity Name           ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+; |demo                                     ; 1222 (407)          ; 172 (83)                  ; 0           ; 0            ; 0       ; 0         ; 84   ; 0            ; |demo                                                                                                 ; demo                  ; work         ;
+;    |lcd1602:lcd1602|                      ; 98 (98)             ; 89 (89)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lcd1602:lcd1602                                                                                 ; lcd1602               ; work         ;
+;    |lpm_divide:Div0|                      ; 116 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div0                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_0jm:auto_generated|     ; 116 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div0|lpm_divide_0jm:auto_generated                                                   ; lpm_divide_0jm        ; work         ;
+;          |sign_div_unsign_olh:divider|    ; 116 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div0|lpm_divide_0jm:auto_generated|sign_div_unsign_olh:divider                       ; sign_div_unsign_olh   ; work         ;
+;             |alt_u_div_47f:divider|       ; 116 (116)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div0|lpm_divide_0jm:auto_generated|sign_div_unsign_olh:divider|alt_u_div_47f:divider ; alt_u_div_47f         ; work         ;
+;    |lpm_divide:Div1|                      ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div1                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_hhm:auto_generated|     ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div1|lpm_divide_hhm:auto_generated                                                   ; lpm_divide_hhm        ; work         ;
+;          |sign_div_unsign_9kh:divider|    ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div1|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh   ; work         ;
+;             |alt_u_div_64f:divider|       ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div1|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f         ; work         ;
+;    |lpm_divide:Div2|                      ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div2                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_hhm:auto_generated|     ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div2|lpm_divide_hhm:auto_generated                                                   ; lpm_divide_hhm        ; work         ;
+;          |sign_div_unsign_9kh:divider|    ; 32 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div2|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh   ; work         ;
+;             |alt_u_div_64f:divider|       ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div2|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f         ; work         ;
+;    |lpm_divide:Div3|                      ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div3                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_jhm:auto_generated|     ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div3|lpm_divide_jhm:auto_generated                                                   ; lpm_divide_jhm        ; work         ;
+;          |sign_div_unsign_bkh:divider|    ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div3|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh   ; work         ;
+;             |alt_u_div_a4f:divider|       ; 56 (56)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div3|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f         ; work         ;
+;    |lpm_divide:Div4|                      ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div4                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_jhm:auto_generated|     ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div4|lpm_divide_jhm:auto_generated                                                   ; lpm_divide_jhm        ; work         ;
+;          |sign_div_unsign_bkh:divider|    ; 56 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div4|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh   ; work         ;
+;             |alt_u_div_a4f:divider|       ; 56 (56)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Div4|lpm_divide_jhm:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f         ; work         ;
+;    |lpm_divide:Mod0|                      ; 131 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod0                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_3bm:auto_generated|     ; 131 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod0|lpm_divide_3bm:auto_generated                                                   ; lpm_divide_3bm        ; work         ;
+;          |sign_div_unsign_olh:divider|    ; 131 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod0|lpm_divide_3bm:auto_generated|sign_div_unsign_olh:divider                       ; sign_div_unsign_olh   ; work         ;
+;             |alt_u_div_47f:divider|       ; 131 (131)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod0|lpm_divide_3bm:auto_generated|sign_div_unsign_olh:divider|alt_u_div_47f:divider ; alt_u_div_47f         ; work         ;
+;    |lpm_divide:Mod1|                      ; 37 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod1                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_k9m:auto_generated|     ; 37 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod1|lpm_divide_k9m:auto_generated                                                   ; lpm_divide_k9m        ; work         ;
+;          |sign_div_unsign_9kh:divider|    ; 37 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod1|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh   ; work         ;
+;             |alt_u_div_64f:divider|       ; 37 (37)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod1|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f         ; work         ;
+;    |lpm_divide:Mod3|                      ; 37 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod3                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_k9m:auto_generated|     ; 37 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod3|lpm_divide_k9m:auto_generated                                                   ; lpm_divide_k9m        ; work         ;
+;          |sign_div_unsign_9kh:divider|    ; 37 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod3|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh   ; work         ;
+;             |alt_u_div_64f:divider|       ; 37 (37)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod3|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider ; alt_u_div_64f         ; work         ;
+;    |lpm_divide:Mod5|                      ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod5                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_m9m:auto_generated|     ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod5|lpm_divide_m9m:auto_generated                                                   ; lpm_divide_m9m        ; work         ;
+;          |sign_div_unsign_bkh:divider|    ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod5|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh   ; work         ;
+;             |alt_u_div_a4f:divider|       ; 59 (59)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod5|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f         ; work         ;
+;    |lpm_divide:Mod6|                      ; 23 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod6                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_m9m:auto_generated|     ; 23 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod6|lpm_divide_m9m:auto_generated                                                   ; lpm_divide_m9m        ; work         ;
+;          |sign_div_unsign_bkh:divider|    ; 23 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod6|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh   ; work         ;
+;             |alt_u_div_a4f:divider|       ; 23 (23)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod6|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f         ; work         ;
+;    |lpm_divide:Mod7|                      ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod7                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_m9m:auto_generated|     ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod7|lpm_divide_m9m:auto_generated                                                   ; lpm_divide_m9m        ; work         ;
+;          |sign_div_unsign_bkh:divider|    ; 59 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod7|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh   ; work         ;
+;             |alt_u_div_a4f:divider|       ; 59 (59)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod7|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f         ; work         ;
+;    |lpm_divide:Mod8|                      ; 23 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod8                                                                                 ; lpm_divide            ; work         ;
+;       |lpm_divide_m9m:auto_generated|     ; 23 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod8|lpm_divide_m9m:auto_generated                                                   ; lpm_divide_m9m        ; work         ;
+;          |sign_div_unsign_bkh:divider|    ; 23 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod8|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh   ; work         ;
+;             |alt_u_div_a4f:divider|       ; 23 (23)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|lpm_divide:Mod8|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; alt_u_div_a4f         ; work         ;
+;    |seven_segment_display:digit0|         ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|seven_segment_display:digit0                                                                    ; seven_segment_display ; work         ;
+;    |seven_segment_display:digit1|         ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|seven_segment_display:digit1                                                                    ; seven_segment_display ; work         ;
+;    |seven_segment_display:digit2|         ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|seven_segment_display:digit2                                                                    ; seven_segment_display ; work         ;
+;    |seven_segment_display:digit3|         ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|seven_segment_display:digit3                                                                    ; seven_segment_display ; work         ;
+;    |seven_segment_display:seg_disp1_unit| ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|seven_segment_display:seg_disp1_unit                                                            ; seven_segment_display ; work         ;
+;    |seven_segment_display:seg_disp2_unit| ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|seven_segment_display:seg_disp2_unit                                                            ; seven_segment_display ; work         ;
+;    |seven_segment_display:seg_disp3_unit| ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|seven_segment_display:seg_disp3_unit                                                            ; seven_segment_display ; work         ;
+;    |seven_segment_display:seg_disp4_unit| ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |demo|seven_segment_display:seg_disp4_unit                                                            ; seven_segment_display ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------------------+-----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |demo|lcd1602:lcd1602|c_state                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ;
++----------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+-------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+-----------------+--------------------+-------------------+----------------+------------------+--------------------+----------------------+--------------+
+; Name                 ; c_state.ROW2_D ; c_state.ROW2_C ; c_state.ROW2_E ; c_state.ROW2_F ; c_state.ROW2_A ; c_state.ROW2_B ; c_state.ROW2_9 ; c_state.ROW2_8 ; c_state.ROW1_E ; c_state.ROW1_D ; c_state.ROW1_F ; c_state.ROW2_ADDR ; c_state.ROW1_B ; c_state.ROW1_C ; c_state.ROW1_A ; c_state.ROW1_9 ; c_state.ROW2_2 ; c_state.ROW2_3 ; c_state.ROW2_1 ; c_state.ROW2_0 ; c_state.ROW2_5 ; c_state.ROW2_4 ; c_state.ROW2_6 ; c_state.ROW2_7 ; c_state.ROW1_3 ; c_state.ROW1_4 ; c_state.ROW1_2 ; c_state.ROW1_1 ; c_state.ROW1_6 ; c_state.ROW1_5 ; c_state.ROW1_7 ; c_state.ROW1_8 ; c_state.DISP_ON ; c_state.ENTRY_MODE ; c_state.ROW1_ADDR ; c_state.ROW1_0 ; c_state.DISP_OFF ; c_state.DISP_CLEAR ; c_state.SET_FUNCTION ; c_state.IDLE ;
++----------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+-------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+-----------------+--------------------+-------------------+----------------+------------------+--------------------+----------------------+--------------+
+; c_state.IDLE         ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 0            ;
+; c_state.SET_FUNCTION ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 1                    ; 1            ;
+; c_state.DISP_CLEAR   ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 1                  ; 0                    ; 1            ;
+; c_state.DISP_OFF     ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 1                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_0       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 1              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_ADDR    ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 1                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ENTRY_MODE   ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 1                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.DISP_ON      ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_8       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_7       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_5       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_6       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_1       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_2       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_4       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_3       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_7       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_6       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_4       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_5       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_0       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_1       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_3       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_2       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_9       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_A       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_C       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_B       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_ADDR    ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_F       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_D       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW1_E       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_8       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_9       ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_B       ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_A       ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_F       ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_E       ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_C       ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
+; c_state.ROW2_D       ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0                 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0               ; 0                  ; 0                 ; 0              ; 0                ; 0                  ; 0                    ; 1            ;
++----------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+-------------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+-----------------+--------------------+-------------------+----------------+------------------+--------------------+----------------------+--------------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; team_name[3,5,7]                       ; Merged with team_name[1]               ;
+; team_name[6]                           ; Merged with team_name[2]               ;
+; team_name[2]                           ; Stuck at GND due to stuck port data_in ;
+; team_name[1]                           ; Stuck at VCC due to stuck port data_in ;
+; lcd1602:lcd1602|c_state~44             ; Lost fanout                            ;
+; lcd1602:lcd1602|c_state~45             ; Lost fanout                            ;
+; lcd1602:lcd1602|c_state~46             ; Lost fanout                            ;
+; lcd1602:lcd1602|c_state~47             ; Lost fanout                            ;
+; lcd1602:lcd1602|c_state~48             ; Lost fanout                            ;
+; lcd1602:lcd1602|c_state~49             ; Lost fanout                            ;
+; Total Number of Removed Registers = 12 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 172   ;
+; Number of registers using Synchronous Clear  ; 20    ;
+; Number of registers using Synchronous Load   ; 2     ;
+; Number of registers using Asynchronous Clear ; 158   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 96    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; pre_seconds[9]                          ; 2       ;
+; pre_seconds[6]                          ; 2       ;
+; pre_seconds[4]                          ; 2       ;
+; pre_seconds[3]                          ; 2       ;
+; button_point1_prev                      ; 4       ;
+; button_point1_reg                       ; 5       ;
+; button_point2_prev                      ; 4       ;
+; button_point2_reg                       ; 5       ;
+; team_name[0]                            ; 3       ;
+; button_second_reg                       ; 6       ;
+; button_second_prev                      ; 5       ;
+; button_minute_prev                      ; 1       ;
+; button_minute_reg                       ; 2       ;
+; Total number of inverted registers = 13 ;         ;
++-----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |demo|lcd1602:lcd1602|cnt_500hz[1] ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 21 LEs               ; 14 LEs                 ; Yes        ; |demo|team1_score[7]               ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 21 LEs               ; 14 LEs                 ; Yes        ; |demo|team2_score[6]               ;
+; 15:1               ; 10 bits   ; 100 LEs       ; 60 LEs               ; 40 LEs                 ; Yes        ; |demo|total_seconds[11]            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |demo ;
++----------------+----------+------------------------------------------+
+; Parameter Name ; Value    ; Type                                     ;
++----------------+----------+------------------------------------------+
+; N              ; 25000000 ; Signed Integer                           ;
++----------------+----------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: lcd1602:lcd1602 ;
++----------------+----------+----------------------------------+
+; Parameter Name ; Value    ; Type                             ;
++----------------+----------+----------------------------------+
+; TIME_20MS      ; 1000000  ; Signed Integer                   ;
+; TIME_500HZ     ; 100000   ; Signed Integer                   ;
+; IDLE           ; 00000000 ; Unsigned Binary                  ;
+; SET_FUNCTION   ; 00000001 ; Unsigned Binary                  ;
+; DISP_OFF       ; 00000011 ; Unsigned Binary                  ;
+; DISP_CLEAR     ; 00000010 ; Unsigned Binary                  ;
+; ENTRY_MODE     ; 00000110 ; Unsigned Binary                  ;
+; DISP_ON        ; 00000111 ; Unsigned Binary                  ;
+; ROW1_ADDR      ; 00000101 ; Unsigned Binary                  ;
+; ROW1_0         ; 00000100 ; Unsigned Binary                  ;
+; ROW1_1         ; 00001100 ; Unsigned Binary                  ;
+; ROW1_2         ; 00001101 ; Unsigned Binary                  ;
+; ROW1_3         ; 00001111 ; Unsigned Binary                  ;
+; ROW1_4         ; 00001110 ; Unsigned Binary                  ;
+; ROW1_5         ; 00001010 ; Unsigned Binary                  ;
+; ROW1_6         ; 00001011 ; Unsigned Binary                  ;
+; ROW1_7         ; 00001001 ; Unsigned Binary                  ;
+; ROW1_8         ; 00001000 ; Unsigned Binary                  ;
+; ROW1_9         ; 00011000 ; Unsigned Binary                  ;
+; ROW1_A         ; 00011001 ; Unsigned Binary                  ;
+; ROW1_B         ; 00011011 ; Unsigned Binary                  ;
+; ROW1_C         ; 00011010 ; Unsigned Binary                  ;
+; ROW1_D         ; 00011110 ; Unsigned Binary                  ;
+; ROW1_E         ; 00011111 ; Unsigned Binary                  ;
+; ROW1_F         ; 00011101 ; Unsigned Binary                  ;
+; ROW2_ADDR      ; 00011100 ; Unsigned Binary                  ;
+; ROW2_0         ; 00010100 ; Unsigned Binary                  ;
+; ROW2_1         ; 00010101 ; Unsigned Binary                  ;
+; ROW2_2         ; 00010111 ; Unsigned Binary                  ;
+; ROW2_3         ; 00010110 ; Unsigned Binary                  ;
+; ROW2_4         ; 00010010 ; Unsigned Binary                  ;
+; ROW2_5         ; 00010011 ; Unsigned Binary                  ;
+; ROW2_6         ; 00010001 ; Unsigned Binary                  ;
+; ROW2_7         ; 00010000 ; Unsigned Binary                  ;
+; ROW2_8         ; 00110000 ; Unsigned Binary                  ;
+; ROW2_9         ; 00110001 ; Unsigned Binary                  ;
+; ROW2_A         ; 00110011 ; Unsigned Binary                  ;
+; ROW2_B         ; 00110010 ; Unsigned Binary                  ;
+; ROW2_C         ; 00110110 ; Unsigned Binary                  ;
+; ROW2_D         ; 00110111 ; Unsigned Binary                  ;
+; ROW2_E         ; 00110101 ; Unsigned Binary                  ;
+; ROW2_F         ; 00110100 ; Unsigned Binary                  ;
++----------------+----------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 12             ; Untyped                ;
+; LPM_WIDTHD             ; 6              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_3bm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_k9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_hhm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_k9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 12             ; Untyped                ;
+; LPM_WIDTHD             ; 6              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_0jm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod3 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_k9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div2 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_hhm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod4 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_k9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod5 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div3 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod6 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod7 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div4 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_jhm ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod8 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seven_segment_display:seg_disp4_unit"                                                                                                                                              ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seven_segment_display:seg_disp3_unit"                                                                                                                                              ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seven_segment_display:seg_disp2_unit"                                                                                                                                              ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seven_segment_display:seg_disp1_unit"                                                                                                                                              ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seven_segment_display:digit3"                                                                                                                                                      ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seven_segment_display:digit2"                                                                                                                                                      ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seven_segment_display:digit1"                                                                                                                                                      ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "seven_segment_display:digit0"                                                                                                                                                      ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type  ; Severity ; Details                                                                                                                                                                            ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; digit ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (4 bits) it drives.  The 28 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 84                          ;
+; cycloneiii_ff         ; 172                         ;
+;     CLR               ; 54                          ;
+;     CLR SCLR          ; 20                          ;
+;     CLR SLD           ; 2                           ;
+;     ENA               ; 14                          ;
+;     ENA CLR           ; 82                          ;
+; cycloneiii_lcell_comb ; 1232                        ;
+;     arith             ; 379                         ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 206                         ;
+;         3 data inputs ; 171                         ;
+;     normal            ; 853                         ;
+;         0 data inputs ; 51                          ;
+;         1 data inputs ; 44                          ;
+;         2 data inputs ; 320                         ;
+;         3 data inputs ; 76                          ;
+;         4 data inputs ; 362                         ;
+;                       ;                             ;
+; Max LUT depth         ; 27.50                       ;
+; Average LUT depth     ; 13.05                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.0.0 Build 614 04/24/2018 SJ Standard Edition
+    Info: Processing started: Wed May 07 10:13:57 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off demo -c demo
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file demo.v
+    Info (12023): Found entity 1: demo File: D:/googledownload/EDA/demof/demof/demo.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file seven_segment_display.v
+    Info (12023): Found entity 1: seven_segment_display File: D:/googledownload/EDA/demof/demof/seven_segment_display.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file lcd1602.v
+    Info (12023): Found entity 1: lcd1602 File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at lcd1602.v(108): created implicit net for "write_flag" File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 108
+Info (12127): Elaborating entity "demo" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at demo.v(181): truncated value with size 12 to match size of target (1) File: D:/googledownload/EDA/demof/demof/demo.v Line: 181
+Warning (10230): Verilog HDL assignment warning at demo.v(282): truncated value with size 12 to match size of target (6) File: D:/googledownload/EDA/demof/demof/demo.v Line: 282
+Warning (10230): Verilog HDL assignment warning at demo.v(283): truncated value with size 12 to match size of target (6) File: D:/googledownload/EDA/demof/demof/demo.v Line: 283
+Info (12128): Elaborating entity "seven_segment_display" for hierarchy "seven_segment_display:digit0" File: D:/googledownload/EDA/demof/demof/demo.v Line: 289
+Info (12128): Elaborating entity "lcd1602" for hierarchy "lcd1602:lcd1602" File: D:/googledownload/EDA/demof/demof/demo.v Line: 340
+Warning (10230): Verilog HDL assignment warning at lcd1602.v(15): truncated value with size 32 to match size of target (8) File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 15
+Warning (10230): Verilog HDL assignment warning at lcd1602.v(16): truncated value with size 32 to match size of target (8) File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 16
+Warning (10230): Verilog HDL assignment warning at lcd1602.v(17): truncated value with size 32 to match size of target (8) File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 17
+Warning (10230): Verilog HDL assignment warning at lcd1602.v(18): truncated value with size 32 to match size of target (8) File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 18
+Warning (10230): Verilog HDL assignment warning at lcd1602.v(24): truncated value with size 136 to match size of target (128) File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 24
+Warning (10230): Verilog HDL assignment warning at lcd1602.v(87): truncated value with size 32 to match size of target (20) File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 87
+Warning (10230): Verilog HDL assignment warning at lcd1602.v(101): truncated value with size 32 to match size of target (20) File: D:/googledownload/EDA/demof/demof/lcd1602.v Line: 101
+Info (278001): Inferred 14 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: D:/googledownload/EDA/demof/demof/demo.v Line: 283
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: D:/googledownload/EDA/demof/demof/demo.v Line: 287
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: D:/googledownload/EDA/demof/demof/demo.v Line: 292
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: D:/googledownload/EDA/demof/demof/demo.v Line: 292
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: D:/googledownload/EDA/demof/demof/demo.v Line: 282
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod3" File: D:/googledownload/EDA/demof/demof/demo.v Line: 297
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: D:/googledownload/EDA/demof/demof/demo.v Line: 302
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod4" File: D:/googledownload/EDA/demof/demof/demo.v Line: 302
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod5" File: D:/googledownload/EDA/demof/demof/demo.v Line: 308
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div3" File: D:/googledownload/EDA/demof/demof/demo.v Line: 313
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod6" File: D:/googledownload/EDA/demof/demof/demo.v Line: 313
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod7" File: D:/googledownload/EDA/demof/demof/demo.v Line: 318
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div4" File: D:/googledownload/EDA/demof/demof/demo.v Line: 323
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod8" File: D:/googledownload/EDA/demof/demof/demo.v Line: 323
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: D:/googledownload/EDA/demof/demof/demo.v Line: 283
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: D:/googledownload/EDA/demof/demof/demo.v Line: 283
+    Info (12134): Parameter "LPM_WIDTHN" = "12"
+    Info (12134): Parameter "LPM_WIDTHD" = "6"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_3bm.tdf
+    Info (12023): Found entity 1: lpm_divide_3bm File: D:/googledownload/EDA/demof/demof/db/lpm_divide_3bm.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_olh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_olh File: D:/googledownload/EDA/demof/demof/db/sign_div_unsign_olh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_47f.tdf
+    Info (12023): Found entity 1: alt_u_div_47f File: D:/googledownload/EDA/demof/demof/db/alt_u_div_47f.tdf Line: 26
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc File: D:/googledownload/EDA/demof/demof/db/add_sub_7pc.tdf Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc File: D:/googledownload/EDA/demof/demof/db/add_sub_8pc.tdf Line: 22
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: D:/googledownload/EDA/demof/demof/demo.v Line: 287
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: D:/googledownload/EDA/demof/demof/demo.v Line: 287
+    Info (12134): Parameter "LPM_WIDTHN" = "6"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_k9m.tdf
+    Info (12023): Found entity 1: lpm_divide_k9m File: D:/googledownload/EDA/demof/demof/db/lpm_divide_k9m.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_9kh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_9kh File: D:/googledownload/EDA/demof/demof/db/sign_div_unsign_9kh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_64f.tdf
+    Info (12023): Found entity 1: alt_u_div_64f File: D:/googledownload/EDA/demof/demof/db/alt_u_div_64f.tdf Line: 26
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: D:/googledownload/EDA/demof/demof/demo.v Line: 292
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: D:/googledownload/EDA/demof/demof/demo.v Line: 292
+    Info (12134): Parameter "LPM_WIDTHN" = "6"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_hhm.tdf
+    Info (12023): Found entity 1: lpm_divide_hhm File: D:/googledownload/EDA/demof/demof/db/lpm_divide_hhm.tdf Line: 24
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: D:/googledownload/EDA/demof/demof/demo.v Line: 282
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: D:/googledownload/EDA/demof/demof/demo.v Line: 282
+    Info (12134): Parameter "LPM_WIDTHN" = "12"
+    Info (12134): Parameter "LPM_WIDTHD" = "6"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_0jm.tdf
+    Info (12023): Found entity 1: lpm_divide_0jm File: D:/googledownload/EDA/demof/demof/db/lpm_divide_0jm.tdf Line: 24
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod5" File: D:/googledownload/EDA/demof/demof/demo.v Line: 308
+Info (12133): Instantiated megafunction "lpm_divide:Mod5" with the following parameter: File: D:/googledownload/EDA/demof/demof/demo.v Line: 308
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_m9m.tdf
+    Info (12023): Found entity 1: lpm_divide_m9m File: D:/googledownload/EDA/demof/demof/db/lpm_divide_m9m.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_bkh File: D:/googledownload/EDA/demof/demof/db/sign_div_unsign_bkh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_a4f.tdf
+    Info (12023): Found entity 1: alt_u_div_a4f File: D:/googledownload/EDA/demof/demof/db/alt_u_div_a4f.tdf Line: 26
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div3" File: D:/googledownload/EDA/demof/demof/demo.v Line: 313
+Info (12133): Instantiated megafunction "lpm_divide:Div3" with the following parameter: File: D:/googledownload/EDA/demof/demof/demo.v Line: 313
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_jhm.tdf
+    Info (12023): Found entity 1: lpm_divide_jhm File: D:/googledownload/EDA/demof/demof/db/lpm_divide_jhm.tdf Line: 24
+Warning (12241): 8 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (13000): Registers with preset signals will power-up high File: D:/googledownload/EDA/demof/demof/demo.v Line: 38
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "total_seconds[0]" is converted into an equivalent circuit using register "total_seconds[0]~_emulated" and latch "total_seconds[0]~1" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[1]" is converted into an equivalent circuit using register "total_seconds[1]~_emulated" and latch "total_seconds[1]~5" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[2]" is converted into an equivalent circuit using register "total_seconds[2]~_emulated" and latch "total_seconds[2]~9" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[3]" is converted into an equivalent circuit using register "total_seconds[3]~_emulated" and latch "total_seconds[3]~13" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[11]" is converted into an equivalent circuit using register "total_seconds[11]~_emulated" and latch "total_seconds[11]~17" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[10]" is converted into an equivalent circuit using register "total_seconds[10]~_emulated" and latch "total_seconds[10]~21" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[9]" is converted into an equivalent circuit using register "total_seconds[9]~_emulated" and latch "total_seconds[9]~25" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[8]" is converted into an equivalent circuit using register "total_seconds[8]~_emulated" and latch "total_seconds[8]~29" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[7]" is converted into an equivalent circuit using register "total_seconds[7]~_emulated" and latch "total_seconds[7]~33" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[6]" is converted into an equivalent circuit using register "total_seconds[6]~_emulated" and latch "total_seconds[6]~37" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[5]" is converted into an equivalent circuit using register "total_seconds[5]~_emulated" and latch "total_seconds[5]~41" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+    Warning (13310): Register "total_seconds[4]" is converted into an equivalent circuit using register "total_seconds[4]~_emulated" and latch "total_seconds[4]~45" File: D:/googledownload/EDA/demof/demof/demo.v Line: 81
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "rw" is stuck at GND File: D:/googledownload/EDA/demof/demof/demo.v Line: 30
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 6 registers lost all their fanouts during netlist optimizations.
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "lpm_divide:Mod3|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider|add_sub_5_result_int[0]~0" File: D:/googledownload/EDA/demof/demof/db/alt_u_div_64f.tdf Line: 51
+    Info (17048): Logic cell "lpm_divide:Mod3|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider|add_sub_3_result_int[0]~8" File: D:/googledownload/EDA/demof/demof/db/alt_u_div_64f.tdf Line: 41
+    Info (17048): Logic cell "lpm_divide:Mod3|lpm_divide_k9m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider|add_sub_4_result_int[0]~10" File: D:/googledownload/EDA/demof/demof/db/alt_u_div_64f.tdf Line: 46
+    Info (17048): Logic cell "lpm_divide:Div2|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider|add_sub_3_result_int[0]~8" File: D:/googledownload/EDA/demof/demof/db/alt_u_div_64f.tdf Line: 41
+    Info (17048): Logic cell "lpm_divide:Div2|lpm_divide_hhm:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_64f:divider|add_sub_4_result_int[0]~10" File: D:/googledownload/EDA/demof/demof/db/alt_u_div_64f.tdf Line: 46
+    Info (17048): Logic cell "lpm_divide:Mod6|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider|add_sub_7_result_int[0]~0" File: D:/googledownload/EDA/demof/demof/db/alt_u_div_a4f.tdf Line: 61
+    Info (17048): Logic cell "lpm_divide:Mod8|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider|add_sub_7_result_int[0]~0" File: D:/googledownload/EDA/demof/demof/db/alt_u_div_a4f.tdf Line: 61
+Info (144001): Generated suppressed messages file D:/googledownload/EDA/demof/demof/output_files/demo.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1361 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 69 output pins
+    Info (21061): Implemented 1277 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 4856 megabytes
+    Info: Processing ended: Wed May 07 10:14:08 2025
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:18
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/googledownload/EDA/demof/demof/output_files/demo.map.smsg.
+
+
